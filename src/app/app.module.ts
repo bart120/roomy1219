@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { HomeModule } from './pages/home/home.module';
 import { APP_ROUTES } from './app.routes';
 import { AuthenticationModule } from './pages/authentication/authentication.module';
+import { RoomService } from './services/room.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,11 +24,15 @@ import { AuthenticationModule } from './pages/authentication/authentication.modu
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(APP_ROUTES),
+    HttpClientModule,
     MaterialModule,
     HomeModule,
     RoomsModule
   ],
-  providers: [],
+  providers: [
+    // {provide: RoomService, useClass: RoomService}
+    // RoomService
+  ],
   bootstrap: [AppComponent],
   exports: []
 
