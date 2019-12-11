@@ -27,8 +27,8 @@
       </a>
     </ng-container>
     <ng-template #logout>
-      Bonjour toto
-      <button mat-button>
+      Bonjour {{user.name}}
+      <button mat-button (click)="onLogout()">
         <mat-icon>locked_out</mat-icon>
         Déconnexion
       </button>
