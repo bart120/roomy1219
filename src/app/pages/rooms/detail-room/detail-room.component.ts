@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Room } from 'src/app/models/room.model';
+import { RoomService } from 'src/app/services/room.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detail-room',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailRoomComponent implements OnInit {
 
-  constructor() { }
+  obsRoom$: Observable<Room>;
+
+  constructor(private serv: RoomService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.obsRoom$ =
+      this.serv.getRoomById(this.route.snapshot.params.id);
   }
 
 }

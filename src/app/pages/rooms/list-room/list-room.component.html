@@ -1,1 +1,26 @@
-<p>list-room works!</p>
+<h3>Liste des salles</h3>
+<ng-container *ngIf="(obsRooms$ | async) as rooms; else loading">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Places</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of rooms">
+                <td>{{room.name}}</td>
+                <td>{{room.seatCount}}</td>
+                <td>{{room.price}}</td>
+                <td><a mat-button [routerLink]="['/rooms/detail', room.id]">
+                        <mat-icon>search</mat-icon>
+                    </a></td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #loading>
+    <mat-spinner></mat-spinner>
+</ng-template>

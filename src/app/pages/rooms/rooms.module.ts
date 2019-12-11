@@ -5,6 +5,7 @@ import { CreateRoomComponent } from './create-room/create-room.component';
 import { DetailRoomComponent } from './detail-room/detail-room.component';
 import { TopFiveRoomComponent } from './top-five-room/top-five-room.component';
 import { MaterialModule } from 'src/app/material.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,6 +13,7 @@ import { MaterialModule } from 'src/app/material.module';
   declarations: [ListRoomComponent, CreateRoomComponent, DetailRoomComponent, TopFiveRoomComponent],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialModule
   ],
   exports: [
