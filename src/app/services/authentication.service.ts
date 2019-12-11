@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -11,7 +12,7 @@ export class AuthenticationService {
         return this._user.asObservable();
     }
 
-    constructor() {
+    constructor(private router: Router) {
         const u = JSON.parse(sessionStorage.getItem('USER'));
         if (u !== null) {
             this._user.next(u);
@@ -29,5 +30,6 @@ export class AuthenticationService {
     logout(): void {
         this._user.next(null);
         sessionStorage.removeItem('USER');
+        this.router.navigate(['/home']);
     }
 }
