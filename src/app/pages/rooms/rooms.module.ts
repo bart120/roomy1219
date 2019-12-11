@@ -6,6 +6,7 @@ import { DetailRoomComponent } from './detail-room/detail-room.component';
 import { TopFiveRoomComponent } from './top-five-room/top-five-room.component';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     TopFiveRoomComponent

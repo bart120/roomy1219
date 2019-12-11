@@ -1,1 +1,25 @@
-<p>create-room works!</p>
+<h3>Ajouter une salle</h3>
+
+<form class="form" [formGroup]="formRoom" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput type="text" placeholder="Nom" formControlName="name" required />
+        <mat-error>Le nom est obligatoire</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" placeholder="Prix" formControlName="price" />
+        <mat-error *ngIf="formRoom.controls.price.errors?.required">Le prix est obligatoire</mat-error>
+        <mat-error *ngIf="formRoom.controls.price.errors?.pattern">Le doit être un nombre</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="number" placeholder="Places" formControlName="seatCount" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="image" formControlName="image">
+            <mat-option *ngFor="let p of pictures" [value]="p.image">{{p.name}}</mat-option>
+        </mat-select>
+        <mat-error>L'image est obligatoire</mat-error>
+    </mat-form-field>
+    <div>
+        <button type="submit" mat-button>Enregistrer</button>
+    </div>
+</form>
